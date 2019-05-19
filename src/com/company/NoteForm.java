@@ -5,9 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class NoteForm {
     private JFrame jFrame;
@@ -19,15 +17,15 @@ public class NoteForm {
     private JTextField textDate;
     private JLabel Text;
 
-    NoteForm(){
+    NoteForm() {
         jFrame = new JFrame();
         jFrame.setContentPane(panel);
         jFrame.setVisible(true);
-        jFrame.setSize(600,400);
+        jFrame.setSize(600, 400);
         buttonSave.addActionListener(new SaveListener());
     }
 
-    NoteForm(Notebook notebook){
+    NoteForm(Notebook notebook) {
         this();
         this.notebook = notebook;
         this.textTitle.setText(notebook.getTitle());
@@ -35,21 +33,21 @@ public class NoteForm {
         this.textDate.setText(notebook.getDate());
     }
 
-    class SaveListener implements ActionListener{
+    class SaveListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (notebook == null){
-                if (textTitle.getText().length() == 0){
+            if (notebook == null) {
+                if (textTitle.getText().length() == 0) {
                     JOptionPane.showMessageDialog(null, "Write Title");
                     return;
                 }
-                if (textDate.getText().length() == 0){
+                if (textDate.getText().length() == 0) {
                     textDate.setText(LocalDate.now().toString());
                 } else {
                     try {
                         LocalDate.parse(textDate.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                    } catch (DateTimeException f){
+                    } catch (DateTimeException f) {
                         JOptionPane.showMessageDialog(null, "Write Date In Format YYYY-MM-DD");
                         return;
                     }
@@ -57,12 +55,12 @@ public class NoteForm {
                 MainForm.getInstance().notebooksList.add(0, new Notebook(textTitle.getText(), textText.getText(), textDate.getText()));
                 MainForm.getInstance().getDefaultListModel().add(0, textTitle.getText());
             } else {
-                if (textDate.getText().length() == 0){
+                if (textDate.getText().length() == 0) {
                     textDate.setText(LocalDate.now().toString());
                 } else {
                     try {
                         LocalDate.parse(textDate.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                    } catch (DateTimeException f){
+                    } catch (DateTimeException f) {
                         JOptionPane.showMessageDialog(null, "Write Date In Format YYYY-MM-DD");
                         return;
                     }

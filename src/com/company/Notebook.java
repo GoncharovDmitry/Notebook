@@ -1,39 +1,37 @@
 package com.company;
 
-import java.util.Date;
-
- class Notebook {
+class Notebook {
     private String title;
     private String text;
     private String date;
 
-     Notebook(String title, String text, String date) {
+    Notebook(String title, String text, String date) {
         this.title = title;
         this.text = text;
         this.date = date;
     }
 
-     String getTitle() {
+    String getTitle() {
         return title;
     }
 
-     void setTitle(String title) {
+    void setTitle(String title) {
         this.title = title;
     }
 
-     String getText() {
+    String getText() {
         return text;
     }
 
-     void setText(String text) {
+    void setText(String text) {
         this.text = text;
     }
 
-     String getDate() {
+    String getDate() {
         return date;
     }
 
-     void setDate(String date) {
+    void setDate(String date) {
         this.date = date;
     }
 }
